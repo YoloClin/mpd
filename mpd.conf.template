@@ -1,0 +1,34 @@
+music_directory    "/audio"
+playlist_directory "/var/mpd/playlists"
+db_file            "/var/mpd/mpd.db"
+log_file           "/var/log/mpd.log"
+pid_file           "/var/mpd/mpd.pid"
+state_file         "/var/mpd/mpdstate"
+sticker_file       "/var/mpd/sticker.sql"
+user               "mpd"
+bind_to_address    "any"
+password           "MPD_ADMIN_PASSWORD@read,add,control,admin"
+
+audio_output {
+    type        "shout"
+    encoding    "vorbis"
+    name        "Shout Stream (ogg)"
+    host        "icecast"
+    port        "8000"
+    mount       "/mpd.ogg"
+    password    "MPD_ICE_PASSWORD"
+    quality     "10" # highest
+    format      "44100:16:1"
+}
+
+audio_output {
+    type        "shout"
+    encoding    "mp3"
+    name        "Shout Stream (mp3)"
+    host        "icecast"
+    port        "8000"
+    mount       "/mpd.mp3"
+    password    "MPD_ICE_PASSWORD"
+    quality     "0" # highest
+    format      "44100:16:1"
+}
